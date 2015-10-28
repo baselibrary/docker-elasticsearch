@@ -1,6 +1,5 @@
 NAME     = baselibrary/elasticsearch
 REPO     = git@github.com:baselibrary/docker-elasticsearch.git
-TAGS     = 1.7
 VERSIONS = $(foreach df,$(wildcard */Dockerfile),$(df:%/Dockerfile=%))
 
 all: build
@@ -18,9 +17,9 @@ library:
 
 sync-branches:
 	git fetch $(REPO) master
-	@$(foreach tag, $(TAGS), git branch -f $(tag) FETCH_HEAD;)
-	@$(foreach tag, $(TAGS), git push $(REPO) $(tag);)
-	@$(foreach tag, $(TAGS), git branch -D $(tag);)
+	@$(foreach tag, $(VERSIONS), git branch -f $(tag) FETCH_HEAD;)
+	@$(foreach tag, $(VERSIONS), git push $(REPO) $(tag);)
+	@$(foreach tag, $(VERSIONS), git branch -D $(tag);)
 
 
 .PHONY: all build library $(VERSIONS)
