@@ -1,0 +1,33 @@
+es1:
+  image: baselibrary/elasticsearch:1.7
+  net: host
+  ports:
+    - "9200:9200"
+    - "9300:9300"
+  command: "--cluster.name=unicast \
+            --network.publish_host=192.168.99.100 \
+            --discovery.zen.ping.multicast.enabled=false \
+            --discovery.zen.ping.unicast.hosts=192.168.99.100:9300,192.168.99.100:9301,192.168.99.100:9302 \
+           "
+es2:
+  image: baselibrary/elasticsearch:1.7
+  net: host
+  ports:
+    - "9201:9200"
+    - "9301:9300"
+  command: "--cluster.name=unicast \
+            --network.publish_host=192.168.99.100 \
+            --discovery.zen.ping.multicast.enabled=false \
+            --discovery.zen.ping.unicast.hosts=192.168.99.100:9300,192.168.99.100:9301,192.168.99.100:9302 \
+           "
+es3:
+  image: baselibrary/elasticsearch:1.7
+  net: host
+  ports:
+    - "9202:9200"
+    - "9302:9300"
+  command: "--cluster.name=unicast \
+            --network.publish_host=192.168.99.100 \
+            --discovery.zen.ping.multicast.enabled=false \
+            --discovery.zen.ping.unicast.hosts=192.168.99.100:9300,192.168.99.100:9301,192.168.99.100:9302 \
+           "
