@@ -16,7 +16,7 @@ echo '# Maintainer: ShawnMa <qsma@thoughtworks.com>'
 
 for version in "${versions[@]}"; do
   echo $version
-  #commit="$(cd "$version" && git log -1 --format='format:%H' -- Dockerfile $(awk 'toupper($1) == "COPY" { for (i = 2; i < NF; i++) { print $i } }' Dockerfile))"
+  commit="$(cd "$version" && git log -1 --format='format:%H' -- Dockerfile $(awk 'toupper($1) == "COPY" { for (i = 2; i < NF; i++) { print $i } }' Dockerfile))"
   fullVersion="$(grep -m1 'ENV ELASTICSEARCH_VERSION' "$version/Dockerfile" | cut -d' ' -f3 | sed 's/~/-/g')"
 
   echo $fullVersion
