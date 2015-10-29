@@ -11,13 +11,20 @@ versions=( "${versions[@]%/}" )
 
 
 for version in "${versions[@]}"; do	
-  fullVersion="$(curl -fsSL "http://packages.elasticsearch.org/elasticsearch/$version/debian/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -F ': ' '$1 == "Package" { pkg = $2 } pkg == "elasticsearch" && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
+  if [ "${version%%.*}" -ge 2 ]; then
+  	repository="http://packages.elastic.co/elasticsearch/${version%%.*}.x/debian"
+    fullVersion="$(curl -fsSL "$repository/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -F ': ' '$1 == "Package" { pkg = $2 } pkg == "elasticsearch" && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
+  else
+  	repository="http://packages.elastic.co/elasticsearch/$version/debian"
+    fullVersion="$(curl -fsSL "$repository/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -F ': ' '$1 == "Package" { pkg = $2 } pkg == "elasticsearch" && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
+	fi
 	(
 		set -x
 		cp docker-entrypoint.sh "$version/"
 		sed '
 			s/%%ELASTICSEARCH_MAJOR%%/'"$version"'/g;
 			s/%%ELASTICSEARCH_VERSION%%/'"$fullVersion"'/g;
+			s!%%ELASTICSEARCH_REPOSITORY%%!'"$repository"'!g;
 		' Dockerfile.template > "$version/Dockerfile"
 	)
 done
