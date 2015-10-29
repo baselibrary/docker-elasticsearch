@@ -13,10 +13,10 @@ versions=( "${versions[@]%/}" )
 for version in "${versions[@]}"; do	
   if [ "${version%%.*}" -ge 2 ]; then
   	repository="http://packages.elastic.co/elasticsearch/${version%%.*}.x/debian"
-    fullVersion="$(curl -fsSL "$repository/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -F ': ' '$1 == "Package" { pkg = $2 } pkg == "elasticsearch" && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
+    fullVersion="$(curl -fsSL "$repository/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -v pkgname="elasticsearch" -F ': ' '$1 == "Package" { pkg = $2 } pkg == pkgname && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
   else
   	repository="http://packages.elastic.co/elasticsearch/$version/debian"
-    fullVersion="$(curl -fsSL "$repository/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -F ': ' '$1 == "Package" { pkg = $2 } pkg == "elasticsearch" && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
+    fullVersion="$(curl -fsSL "$repository/dists/stable/main/binary-amd64/Packages.gz" | gunzip | awk -v pkgname="elasticsearch" -F ': ' '$1 == "Package" { pkg = $2 } pkg == pkgname && $1 == "Version" { print $2 }' | sort -rV | head -n1 )"
 	fi
 	(
 		set -x
