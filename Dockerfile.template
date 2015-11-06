@@ -2,18 +2,18 @@ FROM baselibrary/java:8
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
-ENV MAJOR %%MAJOR%%
-ENV VERSION %%VERSION%%
+ENV ELASTICSEARCH_MAJOR   %%ELASTICSEARCH_MAJOR%%
+ENV ELASTICSEARCH_VERSION %%ELASTICSEARCH_VERSION%%
 
 ## Repository
 RUN \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D88E42B4 &&\
-  echo "deb %%REPOSITORY%% stable main" > /etc/apt/sources.list.d/elasticsearch.list
+  echo "deb %%ELASTICSEARCH_REPOSITORY%% stable main" > /etc/apt/sources.list.d/elasticsearch.list
 
 ## Packages
 RUN \
   apt-get update &&\
-  apt-get install -y elasticsearch=$VERSION &&\
+  apt-get install -y elasticsearch=$ELASTICSEARCH_VERSION &&\
   rm -rf /var/lib/apt/lists/*
 
 ## Configurations

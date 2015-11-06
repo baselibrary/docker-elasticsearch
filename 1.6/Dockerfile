@@ -2,8 +2,8 @@ FROM baselibrary/java:8
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
-ENV MAJOR 1.6
-ENV VERSION 1.6.2
+ENV ELASTICSEARCH_MAJOR   1.6
+ENV ELASTICSEARCH_VERSION 1.6.2
 
 ## Repository
 RUN \
@@ -13,7 +13,7 @@ RUN \
 ## Packages
 RUN \
   apt-get update &&\
-  apt-get install -y elasticsearch=$VERSION &&\
+  apt-get install -y elasticsearch=$ELASTICSEARCH_VERSION &&\
   rm -rf /var/lib/apt/lists/*
 
 ## Configurations
