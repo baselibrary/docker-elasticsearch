@@ -1,30 +1,36 @@
 es1:
   image: baselibrary/elasticsearch:1.7
-  net: host
+  ports: 
+    - "19200:19200"
+    - "19300:19300"
   command: "--cluster.name=unicast \
-            --network.publish_host=192.168.99.100 \
+            --network.publish_host=192.168.99.5 \
             --http.port=19200 \
             --transport.tcp.port=19300 \
             --discovery.zen.ping.multicast.enabled=false \
-            --discovery.zen.ping.unicast.hosts=192.168.99.100:19300,192.168.99.100:19302,192.168.99.100:19304 \
+            --discovery.zen.ping.unicast.hosts=192.168.99.5:19300,192.168.99.5:19302,192.168.99.5:19304 \
            "
 es2:
   image: baselibrary/elasticsearch:1.7
-  net: host
+  ports: 
+    - "19202:19202"
+    - "19302:19302"
   command: "--cluster.name=unicast \
-            --network.publish_host=192.168.99.100 \
+            --network.publish_host=192.168.99.5 \
             --http.port=19202 \
             --transport.tcp.port=19302 \
             --discovery.zen.ping.multicast.enabled=false \
-            --discovery.zen.ping.unicast.hosts=192.168.99.100:19300,192.168.99.100:19302,192.168.99.100:19304 \
+            --discovery.zen.ping.unicast.hosts=192.168.99.5:19300,192.168.99.5:19302,192.168.99.5:19304 \
            "
 es3:
   image: baselibrary/elasticsearch:1.7
-  net: host
+  ports: 
+    - "19204:19204"
+    - "19304:19304"
   command: "--cluster.name=unicast \
-            --network.publish_host=192.168.99.100 \
+            --network.publish_host=192.168.99.5 \
             --http.port=19204 \
             --transport.tcp.port=19304 \
             --discovery.zen.ping.multicast.enabled=false \
-            --discovery.zen.ping.unicast.hosts=192.168.99.100:19300,192.168.99.100:19302,192.168.99.100:19304 \
+            --discovery.zen.ping.unicast.hosts=192.168.99.5:19300,192.168.99.5:19302,192.168.99.5:19304 \
            "
