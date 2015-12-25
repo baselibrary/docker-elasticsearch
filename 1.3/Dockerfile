@@ -28,7 +28,7 @@ RUN chmod a+x            /docker-entrypoint.sh
 
 EXPOSE 9200 9300
 
-ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 VOLUME ["/usr/share/elasticsearch/data"]
 

@@ -3,7 +3,7 @@ MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
 ENV ELASTICSEARCH_MAJOR   2.0
-ENV ELASTICSEARCH_VERSION 2.0.0
+ENV ELASTICSEARCH_VERSION 2.1.1
 
 ## Repository
 RUN \
@@ -28,7 +28,7 @@ RUN chmod a+x            /docker-entrypoint.sh
 
 EXPOSE 9200 9300
 
-ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 VOLUME ["/usr/share/elasticsearch/data"]
 
