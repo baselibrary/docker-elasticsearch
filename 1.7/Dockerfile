@@ -3,7 +3,7 @@ MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
 ENV ELASTICSEARCH_MAJOR   1.7
-ENV ELASTICSEARCH_VERSION 1.7.4
+ENV ELASTICSEARCH_VERSION 1.7.5
 
 ## Repository
 RUN \
