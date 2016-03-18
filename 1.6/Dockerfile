@@ -16,9 +16,6 @@ RUN \
   apt-get install -y elasticsearch=$ELASTICSEARCH_VERSION &&\
   rm -rf /var/lib/apt/lists/*
 
-## Configurations
-ADD config/logging.yml /usr/share/elasticsearch/config/
-
 ## Environments
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 

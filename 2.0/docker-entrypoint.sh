@@ -16,13 +16,13 @@ if [ "$1" = 'elasticsearch' ]; then
   echo "========================================================================"
   echo "initialize:"
   echo "========================================================================"
-  mkdir -p /usr/share/elasticsearch/data && chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
+  mkdir -p /usr/share/elasticsearch/data
   
   ##### run scripts  #####
   echo "========================================================================"
   echo "startup:"
   echo "========================================================================"
-  exec gosu elasticsearch "$@" &
+  exec "$@" &
 
   ##### post scripts #####
   echo "========================================================================"

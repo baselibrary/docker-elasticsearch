@@ -3,7 +3,7 @@ MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
 ENV ELASTICSEARCH_MAJOR   2.0
-ENV ELASTICSEARCH_VERSION 2.2.0
+ENV ELASTICSEARCH_VERSION 2.0.2
 
 ## Repository
 RUN \
@@ -15,9 +15,6 @@ RUN \
   apt-get update &&\
   apt-get install -y elasticsearch=$ELASTICSEARCH_VERSION &&\
   rm -rf /var/lib/apt/lists/*
-
-## Configurations
-ADD config/logging.yml /usr/share/elasticsearch/config/
 
 ## Environments
 ENV PATH /usr/share/elasticsearch/bin:$PATH
