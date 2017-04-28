@@ -2,8 +2,8 @@ FROM baselibrary/java:8
 MAINTAINER ShawnMa <qsma@thoughtworks.com>
 
 ## Version
-ENV ELASTICSEARCH_MAJOR   1.7
-ENV ELASTICSEARCH_VERSION 1.7.6
+ENV ELASTICSEARCH_MAJOR   5.1
+ENV ELASTICSEARCH_VERSION 5.1.2
 
 ## Repository
 RUN \

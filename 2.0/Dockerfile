@@ -8,7 +8,7 @@ ENV ELASTICSEARCH_VERSION 2.0.2
 ## Repository
 RUN \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D88E42B4 &&\
-  echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
+  echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
 
 ## Packages
 RUN \
