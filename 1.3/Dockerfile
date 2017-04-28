@@ -8,7 +8,7 @@ ENV ELASTICSEARCH_VERSION 1.3.9
 ## Repository
 RUN \
   apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D88E42B4 &&\
-  echo "deb http://packages.elastic.co/elasticsearch/1.3/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
+  echo "deb http://packages.elastic.co/elasticsearch/1.3 stable main" > /etc/apt/sources.list.d/elasticsearch.list
 
 ## Packages
 RUN \
@@ -30,5 +30,3 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 VOLUME ["/usr/share/elasticsearch/data"]
 
 CMD ["elasticsearch"]
-
-
